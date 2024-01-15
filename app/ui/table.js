@@ -49,7 +49,7 @@ export default function Table() {
                         scope="col"
                         className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                       >
-                        Status
+                        Rente
                       </th>
                       <th
                         scope="col"
@@ -78,6 +78,31 @@ export default function Table() {
                     {/*  */}
 
                     {data.feed.entry.map((entry, i) => {
+                      let interest = [];
+
+                      interest.push(entry.rentesats1);
+                      interest.push(entry.rentesats2);
+                      interest.push(entry.rentesats3);
+                      interest.push(entry.rentesats4);
+                      interest.push(entry.rentesats5);
+                      interest.push(entry.rentesats6);
+
+                      // Filter out strings
+                      interest = interest.filter(
+                        (value) => typeof value === 'number'
+                      );
+
+                      // Filter out 0 interest
+                      interest = interest.filter((value) => value !== 0);
+
+                      // Skip offers that don't have any interest
+                      if (interest.length < 1) {
+                        return;
+                      }
+
+                      // Return the highest interest if it exists
+                      const highestInterest = Math.max(...interest);
+
                       return (
                         <div key={i}>
                           <tr>
@@ -93,7 +118,7 @@ export default function Table() {
                             </td>
                             <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
                               <div className="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
-                                Customer
+                                {highestInterest}%
                               </div>
                             </td>
                             <td className="px-4 py-4 text-sm whitespace-nowrap">
