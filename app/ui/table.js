@@ -97,6 +97,13 @@ export default function Table() {
                       // Return the highest interest if it exists
                       const highestInterest = Math.max(...interest);
 
+                      // Structure finansportalen.no link
+                      const productIdArray = entry.id.split('/');
+                      const productId =
+                        productIdArray[productIdArray.length - 1];
+
+                      const productUrl = `https://www.finansportalen.no/bank/bankinnskudd/product/${productId}`;
+
                       return (
                         <tr key={i}>
                           <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
@@ -131,12 +138,14 @@ export default function Table() {
                           </td>
 
                           <td className="px-4 py-4 text-sm whitespace-nowrap">
-                            <button
-                              type="submit"
+                            <a
+                              href={productUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                             >
                               Lær mer
-                            </button>
+                            </a>
                           </td>
                         </tr>
                       );
