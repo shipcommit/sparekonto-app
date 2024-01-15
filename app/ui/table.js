@@ -1,20 +1,19 @@
 import { data } from '../data';
 
 export default function Table() {
-  console.log('data.feed.entry:', data.feed.entry);
   return (
     <>
       <section className="container px-4 mx-auto">
         <div className="flex flex-col mt-6">
-          <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-              <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+          <div className="overflow-x-auto">
+            <div className="inline-block min-w-full align-middle">
+              <div className="overflow-hidden border border-gray-200 dark:border-gray-700">
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-gray-800">
                     <tr>
                       <th
                         scope="col"
-                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="py-3.5 px-4 text-sm font-normal text-left text-gray-500 dark:text-gray-400"
                       >
                         <button className="flex items-center gap-x-3 focus:outline-none">
                           <span>Company</span>
@@ -47,36 +46,31 @@ export default function Table() {
                       </th>
                       <th
                         scope="col"
-                        className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="py-3.5 px-4 text-sm font-normal text-left text-gray-500 dark:text-gray-400"
+                      >
+                        Vurderinger
+                      </th>
+                      <th
+                        scope="col"
+                        className="py-3.5 px-4 text-sm font-normal text-left text-gray-500 dark:text-gray-400"
                       >
                         Rente
                       </th>
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="py-3.5 px-4 text-sm font-normal text-left text-gray-500 dark:text-gray-400"
                       >
-                        About
+                        Avkastning
                       </th>
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="py-3.5 px-4 text-sm font-normal text-left text-gray-500 dark:text-gray-400"
                       >
-                        Users
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
-                      >
-                        License use
-                      </th>
-                      <th scope="col" className="relative py-3.5 px-4">
-                        <span className="sr-only">Edit</span>
+                        Valg
                       </th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                    {/*  */}
-
                     {data.feed.entry.map((entry, i) => {
                       let interest = [];
 
@@ -104,75 +98,47 @@ export default function Table() {
                       const highestInterest = Math.max(...interest);
 
                       return (
-                        <div key={i}>
-                          <tr>
-                            <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                              <div>
-                                <h2 className="font-medium text-gray-800 dark:text-white ">
-                                  {entry.leverandor_tekst}
-                                </h2>
-                                <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
-                                  {entry.title}
-                                </p>
-                              </div>
-                            </td>
-                            <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
-                              <div className="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
-                                {highestInterest}%
-                              </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                              <div>
-                                <h4 className="text-gray-700 dark:text-gray-200">
-                                  Content curating app
-                                </h4>
-                                <p className="text-gray-500 dark:text-gray-400">
-                                  Brings all your news into one place
-                                </p>
-                              </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                              <div className="flex items-center">
-                                <img
-                                  className="object-cover w-6 h-6 -mx-1 border-2 border-white rounded-full dark:border-gray-700 shrink-0"
-                                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
-                                  alt=""
-                                />
-                                <img
-                                  className="object-cover w-6 h-6 -mx-1 border-2 border-white rounded-full dark:border-gray-700 shrink-0"
-                                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
-                                  alt=""
-                                />
-                                <img
-                                  className="object-cover w-6 h-6 -mx-1 border-2 border-white rounded-full dark:border-gray-700 shrink-0"
-                                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1256&q=80"
-                                  alt=""
-                                />
-                                <img
-                                  className="object-cover w-6 h-6 -mx-1 border-2 border-white rounded-full dark:border-gray-700 shrink-0"
-                                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
-                                  alt=""
-                                />
-                                <p className="flex items-center justify-center w-6 h-6 -mx-1 text-xs text-blue-600 bg-blue-100 border-2 border-white rounded-full">
-                                  +4
-                                </p>
-                              </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                              <div className="w-48 h-1.5 bg-blue-200 overflow-hidden rounded-full">
-                                <div className="bg-blue-500 w-2/3 h-1.5" />
-                              </div>
-                            </td>
-                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                              <button
-                                type="submit"
-                                className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                              >
-                                Lær mer
-                              </button>
-                            </td>
-                          </tr>
-                        </div>
+                        <tr key={i}>
+                          <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                            <div>
+                              <h2 className="font-medium text-gray-800 dark:text-white ">
+                                {entry.leverandor_tekst}
+                              </h2>
+                              <p className="text-sm font-normal text-gray-600 dark:text-gray-400">
+                                {entry.title}
+                              </p>
+                            </div>
+                          </td>
+                          <td className="px-4 py-4 text-sm whitespace-nowrap">
+                            <div>
+                              <h4 className="text-gray-700 dark:text-gray-200">
+                                Content curating app
+                              </h4>
+                              <p className="text-gray-500 dark:text-gray-400">
+                                Brings all your news into one place
+                              </p>
+                            </div>
+                          </td>
+                          <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
+                            <div className="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                              {highestInterest}%
+                            </div>
+                          </td>
+                          <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
+                            <div className="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                              {highestInterest}%
+                            </div>
+                          </td>
+
+                          <td className="px-4 py-4 text-sm whitespace-nowrap">
+                            <button
+                              type="submit"
+                              className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                            >
+                              Lær mer
+                            </button>
+                          </td>
+                        </tr>
                       );
                     })}
                   </tbody>
