@@ -64,8 +64,8 @@ export default function Chat() {
               </div>
             </span>
             <p className="leading-relaxed">
-              <span className="block font-bold text-gray-700">AI </span>How can
-              I help you today?
+              <span className="block font-bold text-gray-700">AI </span>Hva kan
+              jeg hjelpe deg med i dag?
             </p>
           </div>
 

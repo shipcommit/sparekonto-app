@@ -10,7 +10,27 @@ const openai = new OpenAI({
 export const runtime = 'edge';
 
 export async function POST(req) {
-  const { messages } = await req.json();
+  let { messages } = await req.json();
+
+  // Add a system message as the first prompt
+  const systemMessages = [
+    {
+      role: 'system',
+      content:
+        'You are a helpful chat bot that assists Norwegians with finding a savings account with the best savings rates in Norway.',
+    },
+    {
+      role: 'system',
+      content: 'To answer questions you use data in your database.',
+    },
+    {
+      role: 'system',
+      content: 'The language you speak: Norwegian',
+    },
+  ];
+
+  // Ensure the system message is the first in the array
+  messages = [...systemMessages, ...messages];
 
   // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.chat.completions.create({
