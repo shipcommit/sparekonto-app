@@ -10,32 +10,13 @@ const openai = new OpenAI({
 export const runtime = 'edge';
 
 export async function POST(req) {
-  // 'data' contains the additional data that you have sent:
-  const { messages, data } = await req.json();
-
-  const initialMessages = messages.slice(0, -1);
-  const currentMessage = messages[messages.length - 1];
+  const { messages } = await req.json();
 
   // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.chat.completions.create({
-    model: 'gpt-4-vision-preview',
+    model: 'gpt-3.5-turbo',
     stream: true,
-    max_tokens: 150,
-    messages: [
-      ...initialMessages,
-      {
-        ...currentMessage,
-        content: [
-          { type: 'text', text: currentMessage.content },
-
-          // forward the image information to OpenAI:
-          {
-            type: 'image_url',
-            image_url: data.imageUrl,
-          },
-        ],
-      },
-    ],
+    messages,
   });
 
   // Convert the response into a friendly text-stream

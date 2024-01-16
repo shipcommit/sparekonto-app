@@ -107,19 +107,10 @@ export default function Chat() {
         </div>
 
         <div className="flex items-center pt-0">
-          <form
-            onSubmit={(e) => {
-              handleSubmit(e, {
-                data: {
-                  imageUrl:
-                    'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Field_sparrow_in_CP_%2841484%29_%28cropped%29.jpg/733px-Field_sparrow_in_CP_%2841484%29_%28cropped%29.jpg',
-                },
-              });
-            }}
-          >
+          <form onSubmit={handleSubmit}>
             <input
               value={input}
-              placeholder="What does the image show..."
+              placeholder="Fortell hva du trenger hjelp med..."
               onChange={handleInputChange}
             />
           </form>
