@@ -62,7 +62,7 @@ export default function Table() {
                         scope="col"
                         className="py-3.5 px-4 text-sm font-normal text-left text-gray-500 dark:text-gray-400"
                       >
-                        Avkastning
+                        Avkastning 1 år
                       </th>
                       <th
                         scope="col"

@@ -1,4 +1,5 @@
-import Image from 'next/image';
+'use client';
+
 import CtaForm from './ui/cta-form';
 import Table from './ui/table';
 import Hero from './ui/hero';
