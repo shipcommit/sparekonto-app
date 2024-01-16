@@ -64,8 +64,8 @@ export default function Chat() {
               </div>
             </span>
             <p className="leading-relaxed">
-              <span className="block font-bold text-gray-700">AI </span>Hva kan
-              jeg hjelpe deg med i dag?
+              <span className="block font-bold text-gray-700">Gustav </span>Hva
+              kan jeg hjelpe deg med i dag?
             </p>
           </div>
 
@@ -113,7 +113,7 @@ export default function Chat() {
                   </span>
                   <p className="leading-relaxed">
                     <span className="block font-bold text-gray-700">
-                      {m.role === 'user' ? 'User ' : 'AI '}
+                      {m.role === 'user' ? 'User ' : 'Gustav '}
                     </span>
                     {m.content}
                   </p>
