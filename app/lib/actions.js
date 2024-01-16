@@ -17,73 +17,50 @@ export async function createSearchEmbeddings(query) {
       inputType: 'search_query',
     });
 
-    const embedding = documentRes.embeddings[0];
+    const embeddings = documentRes.embeddings[0];
 
-    console.log('embedding:', embedding);
+    console.log('embeddings:', embeddings);
 
-    return embedding;
+    return embeddings;
   } catch (err) {
     console.log(err);
   }
 }
 
-// const body = JSON.stringify({
-//     collection: 'vectors',
-//     database: 'test',
-//     dataSource: 'Cluster0',
-//     pipeline: [
-//       {
-//         $search: {
-//           index: 'vector_index',
+export async function vectorSearch(embedding) {
+  try {
+    const body = JSON.stringify({
+      collection: 'vectors',
+      database: 'test',
+      dataSource: 'Cluster0',
+      pipeline: [
+        {
+          $vectorSearch: {
+            queryVector: embedding,
+            path: 'embedding',
+            numCandidates: 500,
+            limit: 3,
+            index: 'vector_index',
+          },
+        },
+      ],
+    });
 
-//           compound: {
-//             should: [
-//               {
-//                 vector: {
-//                   path: 'embedding',
-//                   query: embedding,
-//                   score: { boost: { value: 1 } },
-//                 },
-//               },
-//             ],
-//           },
-//         },
-//       },
-//       { $limit: 3 },
-//     ],
-//     //   projection: {
-//     //     _id: 1,
-//     //   },
-//   });
+    const response = await fetch(
+      'https://eu-central-1.aws.data.mongodb-api.com/app/data-eyhyj/endpoint/data/v1/action/aggregate',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Request-Headers': '*',
+          'api-key': process.env.MONGODB_DATA_API_KEY,
+        },
+        body,
+      }
+    );
 
-//   const databaseResponse = await fetch(
-//     'https://eu-central-1.aws.data.mongodb-api.com/app/data-eyhyj/endpoint/data/v1/action/findOne',
-//     {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Access-Control-Request-Headers': '*',
-//         'api-key': process.env.MONGODB_DATA_API_KEY,
-//       },
-//       body,
-//     }
-//   );
-
-//   console.log('databaseResponse:', databaseResponse);
-
-//   // // Find documents
-//   // const documents = await Vector.aggregate([
-//   //   {
-//   //     $vectorSearch: {
-//   //       queryVector: embedding,
-//   //       path: 'embedding',
-//   //       numCandidates: 500,
-//   //       limit: limit,
-//   //       index: 'vector_index',
-//   //     },
-//   //   },
-//   // ]);
-
-//   // console.log('documents:', documents);
-
-//   // return documents;
+    return response.json();
+  } catch (err) {
+    console.log(err);
+  }
+}
