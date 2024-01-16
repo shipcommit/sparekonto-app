@@ -39,7 +39,7 @@ export async function vectorSearch(embedding) {
             queryVector: embedding,
             path: 'embedding',
             numCandidates: 500,
-            limit: 3,
+            limit: 1,
             index: 'vector_index',
           },
         },
