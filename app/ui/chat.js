@@ -1,18 +1,31 @@
 'use client';
 
 import { useChat } from 'ai/react';
+import { useState } from 'react';
+import clsx from 'clsx';
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
 
+  const [open, setOpen] = useState(true);
+
+  function handleOpen() {
+    if (open === true) {
+      setOpen(false);
+    } else {
+      setOpen(true);
+    }
+  }
+
   return (
     <>
       <button
-        className="fixed bottom-4 right-4 inline-flex items-center justify-center text-sm font-medium disabled:pointer-events-none disabled:opacity-50 border rounded-full w-16 h-16 bg-black hover:bg-gray-700 m-0 cursor-pointer border-gray-200 bg-none p-0 normal-case leading-5 hover:text-gray-900"
+        className="fixed bottom-4 right-4 inline-flex items-center justify-center text-sm font-medium disabled:pointer-events-none disabled:opacity-50 border rounded-full w-16 h-16 bg-black hover:bg-gray-700 m-0 cursor-pointer border-gray-200 bg-none p-0 normal-case leading-5 hover:text-gray-900 z-[100]"
         type="button"
         aria-haspopup="dialog"
         aria-expanded="false"
         data-state="closed"
+        onClick={handleOpen}
       >
         <svg
           xmlns=" http://www.w3.org/2000/svg"
@@ -33,7 +46,14 @@ export default function Chat() {
         </svg>
       </button>
 
-      <div className="fixed bottom-[calc(4rem+1.5rem)] right-0 mr-4 bg-white p-6 rounded-lg border border-[#e5e7eb] w-[440px] h-[634px] z-[100]">
+      <div
+        className={clsx(
+          'fixed bottom-[calc(4rem+1.5rem)] right-0 mr-4 bg-white p-6 rounded-lg border border-[#e5e7eb] w-[440px] h-[634px] z-[100]',
+          {
+            hidden: open === false,
+          }
+        )}
+      >
         <div className="flex flex-col space-y-1.5 pb-6">
           <h2 className="font-semibold text-lg tracking-tight">Spareboten</h2>
           <p className="text-sm text-[#6b7280] leading-3">
@@ -41,8 +61,8 @@ export default function Chat() {
           </p>
         </div>
 
-        <div className="pr-4 h-[474px]">
-          <div className="flex gap-3 my-4 text-gray-600 text-sm flex-1">
+        <div className="pr-4 h-[474px] overflow-auto">
+          <div className="flex gap-3 my-4 text-gray-600 text-sm flex-1 w-full">
             <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
               <div className="rounded-full bg-gray-100 border p-1">
                 <svg
@@ -63,7 +83,7 @@ export default function Chat() {
                 </svg>
               </div>
             </span>
-            <p className="leading-relaxed">
+            <p className="leading-relaxed w-full">
               <span className="block font-bold text-gray-700">Gustav </span>Hva
               kan jeg hjelpe deg med i dag?
             </p>
@@ -111,7 +131,7 @@ export default function Chat() {
                       </div>
                     )}
                   </span>
-                  <p className="leading-relaxed">
+                  <p className="leading-relaxed w-full">
                     <span className="block font-bold text-gray-700">
                       {m.role === 'user' ? 'User ' : 'Gustav '}
                     </span>
@@ -122,9 +142,10 @@ export default function Chat() {
             : null}
         </div>
 
-        <div className="flex items-center pt-0">
-          <form onSubmit={handleSubmit}>
+        <div className="flex items-center pt-4">
+          <form onSubmit={handleSubmit} className="w-full">
             <input
+              className="w-full"
               value={input}
               placeholder="Fortell hva du trenger hjelp med..."
               onChange={handleInputChange}

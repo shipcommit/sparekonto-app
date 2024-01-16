@@ -29,10 +29,6 @@ export async function POST(req) {
       },
       {
         role: 'system',
-        content: 'To answer questions you use data in your database.',
-      },
-      {
-        role: 'system',
         content: 'The language you speak: Norwegian',
       },
     ];
@@ -47,13 +43,7 @@ export async function POST(req) {
 
     console.log('databaseResponse.documents:', databaseResponse.documents);
 
-    // console.log(
-    //   'JSON.stringify(databaseResponse.documents[0]):',
-    //   JSON.stringify(databaseResponse.documents[0])
-    // );
-
     // Add data from vector database to prompt if found
-
     if (databaseResponse.documents.length > 0) {
       // Create RAG string
       let ragString = `${databaseResponse.documents[0].url} ${databaseResponse.documents[0].text}`;
@@ -75,7 +65,7 @@ export async function POST(req) {
       messages = [...systemMessages, ...messages];
     }
 
-    // console.log('messages:', messages);
+    console.log('messages:', messages);
 
     // Ask OpenAI for a streaming chat completion given the prompt
     const response = await openai.chat.completions.create({
