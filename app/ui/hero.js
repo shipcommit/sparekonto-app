@@ -79,10 +79,10 @@ export default function Hero() {
                 <div className="flex items-center justify-between -m-2">
                   <div className="w-auto p-2">
                     <a className="inline-block" href="#">
-                      <img
+                      {/* <img
                         src="flaro-assets/logos/flaro-logo-black.svg"
                         alt=""
-                      />
+                      /> */}
                     </a>
                   </div>
                   <div className="w-auto p-2">
@@ -178,7 +178,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap -m-3">
+              {/* <div className="flex flex-wrap -m-3">
                 <div className="w-auto p-3">
                   <img src="flaro-assets/logos/brands/brand.png" alt="" />
                 </div>
@@ -188,7 +188,7 @@ export default function Hero() {
                 <div className="w-auto p-3">
                   <img src="flaro-assets/logos/brands/brand3.png" alt="" />
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="w-full md:w-1/2 p-8">
               <a href="#">
