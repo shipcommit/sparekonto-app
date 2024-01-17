@@ -3,7 +3,6 @@ import { useAppContext } from '../lib/context';
 export default function CtaForm() {
   const { savings, setSavings } = useAppContext();
 
-  // console.log('savings:', savings);
   return (
     <>
       <div

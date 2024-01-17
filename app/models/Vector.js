@@ -24,7 +24,4 @@ const VectorSchema = new mongoose.Schema({
   },
 });
 
-// module.exports = Vector = mongoose.model('vector', VectorSchema);
-
 export default mongoose.model('Vector', VectorSchema);
-// export default mongoose.models.Vector || mongoose.model('Vector', VectorSchema);
