@@ -1,8 +1,12 @@
 import { data } from '../data';
 import stars from '../../public/stars.svg';
 import Image from 'next/image';
+import { useAppContext } from '../lib/context';
 
 export default function Table() {
+  const { savings } = useAppContext();
+
+  console.log('savings:', savings);
   return (
     <>
       <section className="container pb-4 px-4 mx-auto">
@@ -106,6 +110,15 @@ export default function Table() {
 
                       const productUrl = `https://www.finansportalen.no/bank/bankinnskudd/product/${productId}`;
 
+                      let amountAfterInterest = savings;
+
+                      if (savings > 0) {
+                        amountAfterInterest =
+                          (highestInterest / 100 + 1) * savings;
+
+                        amountAfterInterest = Math.trunc(amountAfterInterest);
+                      }
+
                       return (
                         <tr key={i}>
                           <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
@@ -128,7 +141,9 @@ export default function Table() {
                           </td>
                           <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
                             <div className="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
-                              {highestInterest}%
+                              {amountAfterInterest > 0
+                                ? amountAfterInterest + ' kr'
+                                : '...'}
                             </div>
                           </td>
 

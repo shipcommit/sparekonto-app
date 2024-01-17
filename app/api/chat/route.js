@@ -62,6 +62,8 @@ export async function POST(req) {
       messages = [...vectorDataMessages, ...systemMessages, ...messages];
     }
     {
+      //>>> Kan legge byttes ut med logikk for å komme med et forslag til en bank, uten noe rente info
+      // Hvor det nevnes at ingen ting kan finnes i databasen
       messages = [...systemMessages, ...messages];
     }
 
@@ -81,6 +83,5 @@ export async function POST(req) {
     return new StreamingTextResponse(stream);
   } catch (err) {
     console.log(err);
-    // return new NextResponse('Error when submitting form' + err);
   }
 }
