@@ -29,6 +29,10 @@ export async function POST(req) {
       },
       {
         role: 'system',
+        content: 'Use natural sentences when answering.',
+      },
+      {
+        role: 'system',
         content: 'The language you speak: Norwegian',
       },
     ];

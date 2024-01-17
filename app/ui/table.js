@@ -9,7 +9,7 @@ export default function Table() {
   console.log('savings:', savings);
   return (
     <>
-      <section className="container pb-4 px-4 mx-auto">
+      <section className="container pb-4 px-4 mx-auto" id="table">
         <div className="flex flex-col mt-6">
           <div className="overflow-x-auto">
             <div className="inline-block min-w-full align-middle">

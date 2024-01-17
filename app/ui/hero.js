@@ -8,14 +8,14 @@ export default function Hero() {
           <div className="w-auto">
             <div className="flex flex-wrap items-center">
               <div className="w-auto mr-14">
-                <a href="#">
-                  {/* <Image
-                    src="https://shuffle.dev/flaro-assets/images/headers/header.png"
+                {/* <a href="#">
+                  <Image
+                    src="https://res.cloudinary.com/fredrikaurdal/image/upload/v1705483967/Other/becca-tapert-QofjUnxy9LY-unsplash_q7yqxa.jpg"
                     width={100}
                     height={500}
                     alt="Hero image"
-                  /> */}
-                </a>
+                  />
+                </a> */}
               </div>
             </div>
           </div>
@@ -33,12 +33,13 @@ export default function Hero() {
               </div>
               <div className="w-auto hidden lg:block">
                 <div className="inline-block">
-                  <button
+                  <a
+                    href="#cta"
                     className="py-3 px-5 w-full text-white font-semibold border border-indigo-700 rounded-xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200"
                     type="button"
                   >
                     Få bedre rente
-                  </button>
+                  </a>
                 </div>
               </div>
               <div className="w-auto lg:hidden">
@@ -151,17 +152,19 @@ export default function Hero() {
               <div className="flex flex-wrap -m-2.5 mb-20">
                 <div className="w-full md:w-auto p-2.5">
                   <div className="block">
-                    <button
+                    <a
+                      href="#cta"
                       className="py-4 px-6 w-full text-white font-semibold border border-indigo-700 rounded-xl focus:ring focus:ring-indigo-300 bg-indigo-600 hover:bg-indigo-700 transition ease-in-out duration-200"
                       type="button"
                     >
                       Få bedre rente
-                    </button>
+                    </a>
                   </div>
                 </div>
                 <div className="w-full md:w-auto p-2.5">
                   <div className="block">
-                    <button
+                    <a
+                      href="#table"
                       className="py-4 px-9 w-full font-semibold border border-gray-300 hover:border-gray-400 rounded-xl focus:ring focus:ring-gray-50 bg-transparent hover:bg-gray-100 transition ease-in-out duration-200"
                       type="button"
                     >
@@ -170,7 +173,7 @@ export default function Hero() {
                           <span>Se oversikt</span>
                         </div>
                       </div>
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -188,11 +191,15 @@ export default function Hero() {
               </div>
             </div>
             <div className="w-full md:w-1/2 p-8">
-              <img
-                className="transform hover:-translate-y-16 transition ease-in-out duration-1000"
-                src="flaro-assets/images/headers/header.png"
-                alt=""
-              />
+              <a href="#">
+                <Image
+                  className="transform hover:-translate-y-16 transition ease-in-out duration-1000"
+                  src="https://res.cloudinary.com/fredrikaurdal/image/upload/v1705483967/Other/becca-tapert-QofjUnxy9LY-unsplash_q7yqxa.jpg"
+                  width={1000}
+                  height={500}
+                  alt="Hero image"
+                />
+              </a>
             </div>
           </div>
         </div>

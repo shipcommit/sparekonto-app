@@ -6,7 +6,10 @@ export default function CtaForm() {
   // console.log('savings:', savings);
   return (
     <>
-      <div className="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24 lg:py-32">
+      <div
+        className="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24 lg:py-32"
+        id="cta"
+      >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex justify-center items-center">
             <div className="grid gap-4 grid-flow-row max-w-xl lg:max-w-lg">
@@ -33,13 +36,6 @@ export default function CtaForm() {
                     setSavings(event.target.value);
                   }}
                 />
-
-                <button
-                  type="submit"
-                  className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                >
-                  Vis Rente
-                </button>
               </form>
             </div>
           </div>
