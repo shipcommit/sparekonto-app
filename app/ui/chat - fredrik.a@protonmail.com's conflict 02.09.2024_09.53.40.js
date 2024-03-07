@@ -48,7 +48,7 @@ export default function Chat() {
 
       <div
         className={clsx(
-          'fixed bottom-[calc(4rem+1.5rem)] right-0 mr-4 bg-white p-6 rounded-lg border border-[#e5e7eb] w-[440px] h-[500px] z-[100]',
+          'fixed bottom-[calc(4rem+1.5rem)] right-0 mr-4 bg-white p-6 rounded-lg border border-[#e5e7eb] w-[440px] h-[634px] z-[100]',
           {
             hidden: open === false,
           }
@@ -61,7 +61,7 @@ export default function Chat() {
           </p>
         </div>
 
-        <div className="pr-4 h-[320px] overflow-auto">
+        <div className="pr-4 h-[474px] overflow-auto">
           <div className="flex gap-3 my-4 text-gray-600 text-sm flex-1 w-full">
             <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
               <div className="rounded-full bg-gray-100 border p-1">
@@ -133,7 +133,7 @@ export default function Chat() {
                   </span>
                   <p className="leading-relaxed w-full">
                     <span className="block font-bold text-gray-700">
-                      {m.role === 'user' ? 'User ' : 'Gustav '}
+                      {m.role === 'user' ? 'Bruker ' : 'Gustav '}
                     </span>
                     {m.content}
                   </p>
